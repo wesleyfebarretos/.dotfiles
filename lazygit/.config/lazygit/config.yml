@@ -1,0 +1,13 @@
+gui:
+  sidePanelWidth: 0.25
+  expandFocusedSidePanel: true
+  selectedLineBgColor:
+    - underline
+  selectedRangeBgColor:
+    - underline
+os:
+  edit: 'nvim {{filename}}'
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never 
