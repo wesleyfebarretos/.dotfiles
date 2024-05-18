@@ -1,0 +1,38 @@
+[user]
+	email = wesley.ferreira@fengbrasil.com.br
+	name = Wesley Ferreira
+	signingKey = ""
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false
+[merge]
+    ff = no
+[pull]
+    ff = yes
+[core]
+    editor = nvim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[include]
+    path = ./.config/delta/themes.gitconfig
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    features = collared-trogon
+    side-by-side = true
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[apply]
+	whitespace = warn
