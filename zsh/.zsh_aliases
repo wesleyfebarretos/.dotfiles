@@ -1,7 +1,7 @@
 #Docker
 alias dsk="pkill -9 -f 'docker'"
 alias dsa='docker stop $(docker ps -a -q)'
-alias dsi='docker start $(docker ps -a -q)'
+alias dia='docker start $(docker ps -a -q)'
 
 #Wireguard
 alias wg-start="sudo wg-quick up wg"
