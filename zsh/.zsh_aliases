@@ -1,0 +1,27 @@
+#Docker
+alias dsk="pkill -9 -f 'docker'"
+alias dsa='docker stop $(docker ps -a -q)'
+alias dsi='docker start $(docker ps -a -q)'
+
+#Wireguard
+alias wg-start="sudo wg-quick up wg"
+alias wg-stop="sudo wg-quick down wg"
+
+#Hash
+alias hash-generator="openssl rand -base64 64"
+
+#Permission FengDB volume dir
+alias fengdb-data-permission="sudo chmod -R 775 /home/wesley/TI/FENG/P7SET/CLIs/nx-feng-db/@feng-db/data"
+
+#List Git Changes in Submodules
+alias git_modification_changes="git submodule foreach 'git status' | grep -B 1 'feature' && echo "--" && git submodule foreach 'git status' | grep -B 2 'Changes not staged for commit'"
+alias git_head_branch_is_feature_or_developer="git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'feature.*' && git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'develop'"
+
+#Neovim
+alias n="nvim"
+
+#bat instead cat
+alias cat="bat"
+
+#ntl to list scripts max size of 20
+alias lc="ntl -s 20"

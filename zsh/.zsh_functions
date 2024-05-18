@@ -1,0 +1,35 @@
+#Start Projects
+function dev() {
+	current_directory=$(pwd)
+
+	case $current_directory in
+		*/WhiteLabel/nx-feng-api)
+			echo "[npm run start:dev] Iniciando a API do  P7..."
+			npm run start:dev
+		;;
+		*/WhiteLabel/ngx-feng-web-admin)
+			echo "[npm run serve] Iniciando o front do P7..."
+			npm run serve
+		;;
+		*/FENG-ST/adonis-feng-st)
+			echo "[adonis serve --dev] Iniciando o Adonis..."
+			nvm use 16
+			adonis serve --dev
+		;;
+		*/FENG-ST/ngx-fengst-admin)
+                	echo "[npm run serve fengst] Iniciando o painel admin projeto FENGST..."
+                	nvm use 14
+                	npm run serve fengst
+                ;;
+
+		*)
+			echo "Projeto não reconhecido."
+		;;	
+	esac
+}
+
+function git-changes() {
+  git_head_branch_is_feature_or_developer
+  git_modification_changes
+}
+
