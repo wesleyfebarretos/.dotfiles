@@ -13,9 +13,6 @@ alias hash-generator="openssl rand -base64 64"
 #Permission FengDB volume dir
 alias fengdb-data-permission="sudo chmod -R 775 /home/wesley/TI/FENG/P7SET/CLIs/nx-feng-db/@feng-db/data"
 
-#List Git Changes in Submodules
-alias git_modification_changes="git submodule foreach 'git status' | grep -B 1 'feature' && echo "--" && git submodule foreach 'git status' | grep -B 2 'Changes not staged for commit'"
-alias git_head_branch_is_feature_or_developer="git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'feature.*' && git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'develop'"
 
 #Neovim
 alias n="nvim"
@@ -25,3 +22,10 @@ alias cat="bat"
 
 #ntl to list scripts max size of 20
 alias lc="ntl -s 20"
+
+#Git
+##List Git Changes in Submodules
+alias git_modification_changes="git submodule foreach 'git status' | grep -B 1 'feature' && echo "--" && git submodule foreach 'git status' | grep -B 2 'Changes not staged for commit'"
+alias git_head_branch_is_feature_or_developer="git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'feature.*' && git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'develop'"
+##List all tags sort by taggerdate and format time
+alias gt="git for-each-ref --sort=-taggerdate --format '%(refname:short) %(taggerdate)' refs/tags"
