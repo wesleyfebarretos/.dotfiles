@@ -43,6 +43,3 @@ export BAT_THEME="tokyonight_night"
 
 #fzf keys
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-#Set Keyboard rating to i3
-xset r rate 150 60
