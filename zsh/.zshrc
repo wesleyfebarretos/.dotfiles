@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$HOME/usr/bin:$HOME/go/bin:$PATH:/usr/local/go/bin:$HOME/apache-maven-3.9.6/bin"
+export PATH="$HOME/usr/bin:$HOME/go/bin:$PATH:/usr/local/go/bin:$HOME/apache-maven-3.9.6/bin:$HOME/.local/bin"
 
 ZSH_THEME="dracula"
 DRACULA_DISPLAY_FULL_CWD=1
