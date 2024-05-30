@@ -81,19 +81,25 @@ if ! which curl &>/dev/null; then
 	info_done
 fi
 
+# info "Installing fzf"
+# sudo apt install -y fzf
+# cd ~/.dotfiles
+# stow fzf
+# cd ~
+# info_done
+#
+#
+info "Installing zsh"
+sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
+info_done
+
 info "Installing fzf"
-sudo apt install -y fzf
-cd ~/.dotfiles
-stow fzf
-cd ~
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 info_done
 
 info "Installing fd"
 sudo apt install -y fd-find
-info_done
-
-info "Installing zsh"
-sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
 info_done
 
 info "Installing oh-my-zsh"
