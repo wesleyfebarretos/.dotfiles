@@ -146,5 +146,14 @@ cd ~/.dotfiles
 stow zsh
 zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
+zsh
 info_important "Installed zsh"
 info_done
+
+#TODO:
+#Delta
+#I3WM
+#Tmux
+#Nvim
+#Lazyvim
+#stow to config all programs
