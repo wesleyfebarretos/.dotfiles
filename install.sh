@@ -81,14 +81,6 @@ if ! which curl &>/dev/null; then
 	info_done
 fi
 
-# info "Installing fzf"
-# sudo apt install -y fzf
-# cd ~/.dotfiles
-# stow fzf
-# cd ~
-# info_done
-#
-#
 info "Installing zsh"
 sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
 info_done
@@ -100,6 +92,8 @@ info_done
 
 info "Installing fd"
 sudo apt install -y fd-find
+mkdir -p ~/.local/bin
+ln -s $(which fdfind) ~/.local/bin/fd
 info_done
 
 info "Installing oh-my-zsh"
@@ -115,11 +109,11 @@ info_done
 
 info "Installing bat"
 sudo apt install -y bat
-mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 mkdir -p "$(~/.local/bin/bat --config-dir)/themes"
 cd "$(~/.local/bin/bat --config-dir)/themes"
 curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
+~/.local/bin/bat cache --build
 cd ~
 info_done
 
@@ -154,5 +148,3 @@ zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
 info_important "Installed zsh"
 info_done
-
-#TODO: Verificar Erro ao tentar configurar o zsh
