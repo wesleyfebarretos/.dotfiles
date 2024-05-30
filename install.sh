@@ -83,6 +83,9 @@ fi
 
 info "Installing fzf"
 sudo apt install -y fzf
+cd ~/.dotfiles
+stow fzf
+cd ~
 info_done
 
 info "Installing fd"
@@ -98,33 +101,34 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 info_done
 
 info "Installing zsh plugins"
-sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-sudo git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
-sudo git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
 info_done
 
 info "Installing bat"
 sudo apt install -y bat
-sudo mkdir -p ~/.local/bin
-sudo ln -s /usr/bin/batcat ~/.local/bin/bat
-sudo mkdir -p "$(~/.local/bin/bat --config-dir)/themes"
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+mkdir -p "$(~/.local/bin/bat --config-dir)/themes"
 cd "$(~/.local/bin/bat --config-dir)/themes"
-sudo curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
+curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
 cd ~
 info_done
 
 info "Cloning fzf-git"
 rm -rf ~/fzf-git.sh
+cd ~
 git clone https://github.com/junegunn/fzf-git.sh.git
 info_done
 
 info "Installing Zsh Dracula Theme"
-sudo git clone https://github.com/dracula/zsh.git ~/dracula-zsh-theme
-sudo mv ~/dracula-zsh-theme/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
-sudo mkdir ~/.oh-my-zsh/themes/lib
-sudo mv ~/dracula-zsh-theme/lib/* ~/.oh-my-zsh/themes/lib
-sudo rm -rf ~/dracula-zsh-theme
+git clone https://github.com/dracula/zsh.git ~/dracula-zsh-theme
+mv ~/dracula-zsh-theme/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
+mkdir ~/.oh-my-zsh/themes/lib
+mv ~/dracula-zsh-theme/lib/* ~/.oh-my-zsh/themes/lib
+rm -rf ~/dracula-zsh-theme
 info_done
 
 info "Installing Cargo and Rust"
@@ -136,11 +140,11 @@ info "Installing Atuin"
 info_done
 
 info "Configuring zsh"
-sudo rm -rf ~/.zsh*
-sudo rm -rf ~/.bash_history
+rm -rf ~/.zsh*
+rm -rf ~/.bash_history
 cd ~/.dotfiles
-sudo stow zsh
-sudo zsh ~/.zshrc
+stow zsh
+zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
 info_important "Installed zsh"
 info_done
