@@ -67,6 +67,7 @@ info "Cloning wesleyfebarretos/.dotfiles"
 if ! [[ -d ~/dots/.git ]]; then
 	rm -rf ~/.dotfiles
 	git clone https://github.com/wesleyfebarretos/.dotfiles
+	git pull && git submodule update
 else
 	info ".dotfiles already exists, performing git pull"
 	cd ~/.dotifles
@@ -96,17 +97,6 @@ mkdir -p ~/.local/bin
 ln -s $(which fdfind) ~/.local/bin/fd
 info_done
 
-info "Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-info_done
-
-info "Installing zsh plugins"
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
-git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
-info_done
-
 info "Installing bat"
 sudo apt install -y bat
 ln -s /usr/bin/batcat ~/.local/bin/bat
@@ -123,12 +113,23 @@ cd ~
 git clone https://github.com/junegunn/fzf-git.sh.git
 info_done
 
-info "Installing Zsh Dracula Theme"
-git clone https://github.com/dracula/zsh.git ~/dracula-zsh-theme
-mv ~/dracula-zsh-theme/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
-mkdir ~/.oh-my-zsh/themes/lib
-mv ~/dracula-zsh-theme/lib/* ~/.oh-my-zsh/themes/lib
-rm -rf ~/dracula-zsh-theme
+info "Installing Nvim"
+cd ~
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage --appimage-extract
+./squashfs-root/AppRun --version
+# mkdir -p ~/usr/bin
+sudo mv ./squashfs-root/AppRun /usr/bin/nvim
+rm -rf squashfs-root
+info_done
+
+info "Configuring Nvim"
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.cache/nvim
+cd ~/.dotfiles && stow nvim && cd ~
 info_done
 
 info "Installing Cargo and Rust"
@@ -146,8 +147,26 @@ cd ~/.dotfiles
 stow zsh
 zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
-zsh
 info_important "Installed zsh"
+info_done
+
+info "Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+info_done
+
+info "Installing zsh plugins"
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
+info_done
+
+info "Installing Zsh Dracula Theme"
+git clone https://github.com/dracula/zsh.git ~/dracula-zsh-theme
+mv ~/dracula-zsh-theme/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
+mkdir ~/.oh-my-zsh/themes/lib
+mv ~/dracula-zsh-theme/lib/* ~/.oh-my-zsh/themes/lib
+rm -rf ~/dracula-zsh-theme
 info_done
 
 #TODO:
