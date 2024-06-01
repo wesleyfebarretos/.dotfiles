@@ -55,6 +55,12 @@ info "Updating packages"
 sudo apt update && sudo apt-get update && sudo apt-get install -y build-essential
 info_done
 
+if ! which fusermount &>/dev/null; then
+	info "Instaling fuse"
+	sudo apt -y install fuse
+	info_done
+fi
+
 info "Installing git"
 sudo apt install -y git
 info_done
@@ -67,7 +73,12 @@ info "Cloning wesleyfebarretos/.dotfiles"
 if ! [[ -d ~/dots/.git ]]; then
 	rm -rf ~/.dotfiles
 	git clone https://github.com/wesleyfebarretos/.dotfiles
-	git pull && git submodule update
+	cd .dotfiles
+	git init
+	git pull origin master
+	git submodule init
+	git submodule update
+	cd ../
 else
 	info ".dotfiles already exists, performing git pull"
 	cd ~/.dotifles
@@ -116,12 +127,9 @@ info_done
 info "Installing Nvim"
 cd ~
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract
-./squashfs-root/AppRun --version
-# mkdir -p ~/usr/bin
-sudo mv ./squashfs-root/AppRun /usr/bin/nvim
-rm -rf squashfs-root
+mkdir -p usr/bin
+mv nvim.appimage usr/bin/nvim
+chmod u+x usr/bin/nvim
 info_done
 
 info "Configuring Nvim"
@@ -132,22 +140,25 @@ rm -rf ~/.cache/nvim
 cd ~/.dotfiles && stow nvim && cd ~
 info_done
 
+info "Installing Lazygit"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+info_done
+
+info "Configuring Layzigt"
+rm -rf ~/.config/lazygit
+cd ~/.dotfiles && stow lazygit
+cd ~
+info_done
+
 info "Installing Cargo and Rust"
 curl https://sh.rustup.rs -sSf | sh
 info_done
 
 info "Installing Atuin"
 ~/.cargo/bin/cargo install atuin
-info_done
-
-info "Configuring zsh"
-rm -rf ~/.zsh*
-rm -rf ~/.bash_history
-cd ~/.dotfiles
-stow zsh
-zsh ~/.zshrc
-sudo usermod --shell /usr/bin/zsh $USER
-info_important "Installed zsh"
 info_done
 
 info "Installing oh-my-zsh"
@@ -169,10 +180,18 @@ mv ~/dracula-zsh-theme/lib/* ~/.oh-my-zsh/themes/lib
 rm -rf ~/dracula-zsh-theme
 info_done
 
+info "Configuring zsh"
+rm -rf ~/.zsh*
+rm -rf ~/.bash_history
+cd ~/.dotfiles
+stow zsh
+zsh ~/.zshrc
+sudo usermod --shell /usr/bin/zsh $USER
+info_done
+
+info_important "Finish Setup Dump!!!"
 #TODO:
 #Delta
 #I3WM
 #Tmux
-#Nvim
-#Lazyvim
 #stow to config all programs

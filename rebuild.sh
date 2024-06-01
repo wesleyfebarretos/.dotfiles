@@ -1,2 +1,2 @@
 docker build -t test .
-docker run --rm -it test
+docker run --privileged --rm -it test
