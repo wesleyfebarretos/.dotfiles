@@ -87,6 +87,19 @@ else
 fi
 info_done
 
+info "Installing I3WM"
+cd ~
+/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2024.03.04_all.deb keyring.deb SHA256:f9bb4340b5ce0ded29b7e014ee9ce788006e9bbfe31e96c09b2118ab91fca734
+sudo apt install ./keyring.deb
+echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
+sudo apt update
+sudo apt install -y i3
+info_done
+
+info "Installing Tmux"
+sudo apt install -y tmux
+info_done
+
 if ! which curl &>/dev/null; then
 	info "Instaling curl"
 	sudo apt -y install curl
@@ -99,7 +112,7 @@ info_done
 
 info "Installing fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+yes | ~/.fzf/install
 info_done
 
 info "Installing fd"
@@ -161,6 +174,16 @@ info "Installing Atuin"
 ~/.cargo/bin/cargo install atuin
 info_done
 
+info "Installing Git-delta"
+~/.cargo/bin/cargo install git-delta
+info_done
+
+info "Configuring Git-delta"
+rm -rf ~/.config/delta
+cd ~/.dotfiles && stow delta
+cd ~
+info_done
+
 info "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 info_done
@@ -187,6 +210,20 @@ cd ~/.dotfiles
 stow zsh
 zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
+info_done
+
+info "Setup All Configs"
+cd ~/.dotfiles
+rm -rf ~/.gitconfig && stow git
+rm -rf ~/.config/delta && stow delta
+rm -rf ~/.config/gtk-3.0 && stow gtk-3.0
+rm -rf ~/.config/i3 && stow i3
+rm -rf ~/.config/lazygit && stow lazygit
+rm -rf ~/.config/nvim && stow nvim
+rm -rf ~/.config/tmux && stow tmux
+rm -rf ~/.local/scripts && stow scripts
+rm -rf ~/.zsh* && stow zsh
+cd ~
 info_done
 
 info_important "Finish Setup Dump!!!"
