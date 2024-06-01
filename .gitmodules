@@ -1,6 +1,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
-	url = git@github.com:wesleyfebarretos/weslazy.git
+	url = https://github.com/wesleyfebarretos/weslazy.git
 [submodule "tmux/.config/tmux"]
 	path = tmux/.config/tmux
-	url = git@github.com:wesleyfebarretos/westmux.git
+	url = https://github.com/wesleyfebarretos/westmux.git
