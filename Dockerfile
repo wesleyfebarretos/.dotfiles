@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 # Install any necessary packages with root privileges
 RUN apt update && \
