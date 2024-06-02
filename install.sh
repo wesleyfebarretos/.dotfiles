@@ -97,7 +97,18 @@ sudo apt install -y i3
 info_done
 
 info "Installing Tmux"
-sudo apt install -y tmux
+sudo apt install -y autoconf automake pkg-config libevent-dev libncurses-dev bison
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure && make
+cd ~ && mkdir -p usr/bin
+mv ./tmux ~/usr/bin/tmux
+cd ~ && rm -rf tmux
+info_done
+
+info "Installing Tmux Plugin Manager [TPM]"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 info_done
 
 if ! which curl &>/dev/null; then
@@ -171,7 +182,7 @@ curl https://sh.rustup.rs -sSf | sh
 info_done
 
 info "Installing Atuin"
-~/.cargo/bin/cargo install atuin
+/.cargo/bin/cargo install atuin
 info_done
 
 info "Installing Git-delta"
@@ -185,7 +196,7 @@ cd ~
 info_done
 
 info "Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 info_done
 
 info "Installing zsh plugins"
@@ -227,6 +238,7 @@ cd ~
 info_done
 
 info_important "Finish Setup Dump!!!"
+#WARNING: Verificar se o tmux está sendo instalado corretamente e ver as configurações
 #TODO:
 #Delta
 #I3WM
