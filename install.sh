@@ -243,6 +243,7 @@ rm -rf ~/.config/lazygit && stow lazygit
 rm -rf ~/.config/nvim && stow nvim
 rm -rf ~/.local/scripts && stow scripts
 rm -rf ~/.zsh* && stow zsh
+rm -rf ~/install.sh
 cd ~
 info_done
 
