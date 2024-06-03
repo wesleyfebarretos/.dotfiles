@@ -55,6 +55,12 @@ info "Updating packages"
 sudo apt update && sudo apt-get update && sudo apt-get install -y build-essential
 info_done
 
+if ! which curl &>/dev/null; then
+	info "Instaling curl"
+	sudo apt -y install curl
+	info_done
+fi
+
 if ! which fusermount &>/dev/null; then
 	info "Instaling fuse"
 	sudo apt -y install fuse
@@ -94,6 +100,7 @@ sudo apt install ./keyring.deb
 echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
 sudo apt update
 sudo apt install -y i3
+rm -rf keyring.deb
 info_done
 
 info "Installing Tmux"
@@ -103,19 +110,14 @@ cd tmux
 sh autogen.sh
 ./configure && make
 cd ~ && mkdir -p usr/bin
-mv ./tmux ~/usr/bin/tmux
+mv ./tmux/tmux ~/usr/bin/tmux
 cd ~ && rm -rf tmux
 info_done
 
 info "Installing Tmux Plugin Manager [TPM]"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
 info_done
-
-if ! which curl &>/dev/null; then
-	info "Instaling curl"
-	sudo apt -y install curl
-	info_done
-fi
 
 info "Installing zsh"
 sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
@@ -169,6 +171,7 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
+rm -rf lazygit*
 info_done
 
 info "Configuring Layzigt"
@@ -182,7 +185,7 @@ curl https://sh.rustup.rs -sSf | sh
 info_done
 
 info "Installing Atuin"
-/.cargo/bin/cargo install atuin
+~/.cargo/bin/cargo install atuin
 info_done
 
 info "Installing Git-delta"
@@ -238,9 +241,6 @@ cd ~
 info_done
 
 info_important "Finish Setup Dump!!!"
-#WARNING: Verificar se o tmux está sendo instalado corretamente e ver as configurações
 #TODO:
-#Delta
-#I3WM
-#Tmux
+#Delta Check the problem
 #stow to config all programs
