@@ -111,7 +111,7 @@ info "Installing i3-resurrect"
 pip3 install --user --upgrade i3-resurrect
 info_done
 
-info "Installing Tmux"
+info "Installing tmux"
 sudo apt install -y autoconf automake pkg-config libevent-dev libncurses-dev bison
 git clone https://github.com/tmux/tmux.git
 cd tmux
@@ -122,14 +122,14 @@ mv ./tmux/tmux ~/usr/bin/tmux
 cd ~ && rm -rf tmux
 info_done
 
-info "Configuring Tmux"
+info "Configuring tmux"
 rm -rf ~/.config/tmux
 cd ~/.dotfiles && stow tmux
 export PATH=$PATH:$HOME/usr/bin
 cd ~
 info_done
 
-info "Installing Tmux Plugin Manager [TPM]"
+info "Installing tmux plugin manager [TPM]"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 info_done
@@ -165,7 +165,7 @@ cd ~
 git clone https://github.com/junegunn/fzf-git.sh.git
 info_done
 
-info "Installing Nvim"
+info "Installing nvim"
 cd ~
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 mkdir -p usr/bin
@@ -173,7 +173,7 @@ mv nvim.appimage usr/bin/nvim
 chmod u+x usr/bin/nvim
 info_done
 
-info "Configuring Nvim"
+info "Configuring nvim"
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 rm -rf ~/.local/state/nvim
@@ -181,7 +181,7 @@ rm -rf ~/.cache/nvim
 cd ~/.dotfiles && stow nvim && cd ~
 info_done
 
-info "Installing Fira Code Nerd Font"
+info "Installing fira code nerd font"
 curl -Lo FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
 unzip FiraCode.zip -d FiraCode
 mkdir -p ~/.local/share/fonts
@@ -190,7 +190,7 @@ fc-cache -fv
 rm -rf FiraCode.zip FiraCode
 info_done
 
-info "Installing Lazygit"
+info "Installing lazygit"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
@@ -198,26 +198,30 @@ sudo install lazygit /usr/local/bin
 rm -rf lazygit*
 info_done
 
-info "Configuring Layzigt"
+info "Configuring lazygit"
 rm -rf ~/.config/lazygit
 cd ~/.dotfiles && stow lazygit
 cd ~
 info_done
 
-info "Installing Cargo and Rust"
+info "Installing cargo and rust"
 curl https://sh.rustup.rs -sSf | sh
 export PATH=$PATH:$HOME/.cargo/bin
 info_done
 
-info "Installing Atuin"
+info "Installing atuin"
 cargo install atuin
 info_done
 
-info "Installing Git-delta"
+info "Installing git-delta"
 cargo install git-delta
 info_done
 
-info "Configuring Git-delta"
+info "Installing eza"
+cargo install git-delta
+info_done
+
+info "Configuring git-delta"
 rm -rf ~/.config/delta
 cd ~/.dotfiles && stow delta
 cd ~
@@ -234,7 +238,7 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.o
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
 info_done
 
-info "Installing Zsh Dracula Theme"
+info "Installing zsh dracula theme"
 git clone https://github.com/dracula/zsh.git ~/dracula-zsh-theme
 mv ~/dracula-zsh-theme/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
 mkdir ~/.oh-my-zsh/themes/lib
@@ -251,7 +255,7 @@ zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
 info_done
 
-info "Setup All Configs"
+info "Setup all configs"
 cd ~/.dotfiles
 rm -rf ~/.gitconfig && stow git
 rm -rf ~/.config/delta && stow delta
