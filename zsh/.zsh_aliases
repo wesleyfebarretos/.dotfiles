@@ -20,6 +20,9 @@ alias n="nvim"
 #bat instead cat
 alias cat="bat"
 
+#eza instead ls
+alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
 #ntl to list scripts max size of 20
 alias lc="ntl -s 20"
 
