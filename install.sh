@@ -195,9 +195,9 @@ info "Installing Atuin"
 ~/.cargo/bin/cargo install atuin
 info_done
 
-# info "Installing Git-delta"
-# ~/.cargo/bin/cargo install git-delta
-# info_done
+info "Installing Git-delta"
+~/.cargo/bin/cargo install git-delta
+info_done
 
 info "Configuring Git-delta"
 rm -rf ~/.config/delta
@@ -248,7 +248,3 @@ cd ~
 info_done
 
 info_important "Finish Setup Dump!!!"
-#TODO:
-#TMux TPM não instalando automatico pq nao está reocnhecendo o comadno tmux no PATH, está sendo executando antes do zsh
-#Delta Check the problem
-#stow to config all programs
