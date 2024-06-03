@@ -114,6 +114,13 @@ mv ./tmux/tmux ~/usr/bin/tmux
 cd ~ && rm -rf tmux
 info_done
 
+info "Configuring Tmux"
+rm -rf ~/.config/tmux
+cd ~/.dotfiles && stow tmux
+export PATH=$PATH:$HOME/usr/bin
+cd ~
+info_done
+
 info "Installing Tmux Plugin Manager [TPM]"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
@@ -188,9 +195,9 @@ info "Installing Atuin"
 ~/.cargo/bin/cargo install atuin
 info_done
 
-info "Installing Git-delta"
-~/.cargo/bin/cargo install git-delta
-info_done
+# info "Installing Git-delta"
+# ~/.cargo/bin/cargo install git-delta
+# info_done
 
 info "Configuring Git-delta"
 rm -rf ~/.config/delta
@@ -234,7 +241,6 @@ rm -rf ~/.config/gtk-3.0 && stow gtk-3.0
 rm -rf ~/.config/i3 && stow i3
 rm -rf ~/.config/lazygit && stow lazygit
 rm -rf ~/.config/nvim && stow nvim
-rm -rf ~/.config/tmux && stow tmux
 rm -rf ~/.local/scripts && stow scripts
 rm -rf ~/.zsh* && stow zsh
 cd ~
@@ -242,5 +248,6 @@ info_done
 
 info_important "Finish Setup Dump!!!"
 #TODO:
+#TMux TPM não instalando automatico pq nao está reocnhecendo o comadno tmux no PATH, está sendo executando antes do zsh
 #Delta Check the problem
 #stow to config all programs
