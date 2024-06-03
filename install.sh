@@ -53,19 +53,19 @@ cd ~
 
 info "Updating packages"
 sudo apt update && sudo apt-get update && sudo apt-get install -y build-essential
-info_done
 
 if ! which curl &>/dev/null; then
-	info "Instaling curl"
 	sudo apt -y install curl
-	info_done
 fi
 
 if ! which fusermount &>/dev/null; then
-	info "Instaling fuse"
 	sudo apt -y install fuse
-	info_done
 fi
+
+if ! which unzip &>/dev/null; then
+	sudo apt -y install unzip
+fi
+info_done
 
 info "Installing git"
 sudo apt install -y git
@@ -93,7 +93,7 @@ else
 fi
 info_done
 
-info "Installing I3WM"
+info "Installing i3wm"
 cd ~
 /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2024.03.04_all.deb keyring.deb SHA256:f9bb4340b5ce0ded29b7e014ee9ce788006e9bbfe31e96c09b2118ab91fca734
 sudo apt install ./keyring.deb
@@ -101,6 +101,14 @@ echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-relea
 sudo apt update
 sudo apt install -y i3
 rm -rf keyring.deb
+info_done
+
+info "Installing pip3"
+sudo apt install -y python3-pip
+info_done
+
+info "Installing i3-resurrect"
+pip3 install --user --upgrade i3-resurrect
 info_done
 
 info "Installing Tmux"
@@ -173,6 +181,15 @@ rm -rf ~/.cache/nvim
 cd ~/.dotfiles && stow nvim && cd ~
 info_done
 
+info "Installing Fira Code Nerd Font"
+curl -Lo FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
+unzip FiraCode.zip -d FiraCode
+mkdir -p ~/.local/share/fonts
+mv FiraCode/*.ttf ~/.local/share/fonts/
+fc-cache -fv
+rm -rf FiraCode.zip FiraCode
+info_done
+
 info "Installing Lazygit"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -189,14 +206,15 @@ info_done
 
 info "Installing Cargo and Rust"
 curl https://sh.rustup.rs -sSf | sh
+export PATH=$PATH:$HOME/.cargo/bin
 info_done
 
 info "Installing Atuin"
-~/.cargo/bin/cargo install atuin
+cargo install atuin
 info_done
 
 info "Installing Git-delta"
-~/.cargo/bin/cargo install git-delta
+cargo install git-delta
 info_done
 
 info "Configuring Git-delta"
