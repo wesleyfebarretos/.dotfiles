@@ -218,7 +218,7 @@ cargo install git-delta
 info_done
 
 info "Installing eza"
-cargo install git-delta
+cargo install eza
 info_done
 
 info "Configuring git-delta"
