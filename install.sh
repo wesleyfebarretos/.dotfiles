@@ -181,13 +181,20 @@ rm -rf ~/.cache/nvim
 cd ~/.dotfiles && stow nvim && cd ~
 info_done
 
-info "Installing fira code nerd font"
+info "Installing fira code"
 curl -Lo FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
 unzip FiraCode.zip -d FiraCode
 mkdir -p ~/.local/share/fonts
 mv FiraCode/*.ttf ~/.local/share/fonts/
 fc-cache -fv
 rm -rf FiraCode.zip FiraCode
+info_done
+
+info "Installing comic mono"
+curl -o ComicMono.ttf https://dtinth.github.io/comic-mono-font/ComicMono.ttf
+curl -o ComicMono-Bold.ttf https://dtinth.github.io/comic-mono-font/ComicMono-Bold.ttf
+mv ComicMono* ~/.local/share/fonts/
+fc-cache -fv
 info_done
 
 info "Installing lazygit"
