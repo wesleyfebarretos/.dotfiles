@@ -33,3 +33,31 @@ function git-changes() {
   git_modification_changes
 }
 
+function checkout_submodules_feat() {
+  local prefix=$1
+
+  git submodule update --init --recursive
+
+  git submodule foreach "
+    # Entrar no diretório do submódulo
+    echo 'Entrando no submódulo \$name'
+    cd \$toplevel/\$sm_path
+
+    # Listar todas as branches remotas e filtrar as que começam com o prefixo fornecido
+    branches=\$(git branch -r | grep '${prefix}-v[0-9]*')
+
+    if [ -n \"\$branches\" ]; then
+      # Ordenar branches numericamente e pegar a última
+      latest_branch=\$(echo \"\$branches\" | sort -V | tail -n 1)
+
+      # Remover o prefixo 'origin/' da branch
+      branch_name=\${latest_branch#origin/}
+
+      echo 'Fazendo checkout na branch \$branch_name'
+      git checkout \$branch_name
+    else
+      echo 'Nenhuma branch encontrada para \$name que começa com ${prefix}'
+    fi
+  "
+}
+
