@@ -268,6 +268,7 @@ rm -rf ~/.gitconfig && stow git
 rm -rf ~/.config/delta && stow delta
 rm -rf ~/.config/gtk-3.0 && stow gtk-3.0
 rm -rf ~/.config/i3 && stow i3
+rm -rf ~/.config/i3status && stow i3status
 rm -rf ~/.config/lazygit && stow lazygit
 rm -rf ~/.config/nvim && stow nvim
 rm -rf ~/.local/scripts && stow scripts
