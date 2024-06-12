@@ -32,3 +32,6 @@ alias git_modification_changes="git submodule foreach 'git status' | grep -B 1 '
 alias git_head_branch_is_feature_or_developer="git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'feature.*' && git submodule foreach 'git name-rev --name-only HEAD' | grep -B 1 'develop'"
 ##List all tags sort by taggerdate and format time
 alias gt="git for-each-ref --sort=-taggerdate --format '%(refname:short) %(taggerdate)' refs/tags"
+
+#See mouse battery G703
+alias mouse-status="upower --dump | grep -A 13 'G703'"
