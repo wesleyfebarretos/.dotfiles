@@ -1,5 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:$HOME/usr/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/apache-maven-3.9.6/bin:$HOME/.local/bin:/opt/docker-desktop/bin:$HOME/.local/scripts:$HOME/.cargo/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/usr/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/apache-maven-3.9.6/bin:$HOME/.local/bin:/opt/docker-desktop/bin:$HOME/.local/scripts:$HOME/.cargo/bin"
 
 ZSH_THEME="dracula"
 DRACULA_DISPLAY_FULL_CWD=1
