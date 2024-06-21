@@ -1,6 +1,7 @@
 gui:
   sidePanelWidth: 0.25
   expandFocusedSidePanel: true
+  border: rounded
   selectedLineBgColor:
     - underline
   selectedRangeBgColor:
