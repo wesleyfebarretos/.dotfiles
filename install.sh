@@ -8,26 +8,26 @@ BOLD="$(tput bold)"
 NORMAL="$(tput sgr0)"
 
 info() {
-	printf "${RED}${BOLD}*** $1 ${NORMAL}\n"
+    printf "${RED}${BOLD}*** $1 ${NORMAL}\n"
 }
 
 info_done() {
-	printf "${RED}${BOLD}*** Done! ${NORMAL}\n\n"
-	sleep 1
+    printf "${RED}${BOLD}*** Done! ${NORMAL}\n\n"
+    sleep 1
 }
 
 info_error() {
-	printf "${BLUE}${BOLD}!!!ERROR: $1 ${NORMAL}\n"
-	exit 1
+    printf "${BLUE}${BOLD}!!!ERROR: $1 ${NORMAL}\n"
+    exit 1
 }
 
 info_important() {
-	printf "${BLUE}${BOLD}!!! $1 ${NORMAL}\n"
+    printf "${BLUE}${BOLD}!!! $1 ${NORMAL}\n"
 }
 
 info_ascii() {
-	printf "${GREEN}${BOLD}"
-	cat <<'EOF'
+    printf "${GREEN}${BOLD}"
+    cat <<'EOF'
  ____      ____  ________    ______    _____      ____  ____   ____  _____
 |_  _|    |_  _||_   __  | .' ____ \  |_   _|    |_  _||_  _| |_   \|_   _|
   \ \  /\  / /    | |_ \_| | (___ \_|   | |        \ \  / /     |   \ | |
@@ -35,15 +35,15 @@ info_ascii() {
     \  /\  /     _| |__/ | | \____) |  _| |__/ |    _|  |_     _| |_\   |_
      \/  \/     |________|  \______.' |________|   |______|   |_____|\____|
 EOF
-	printf "${NORMAL}"
-	sleep 1
+    printf "${NORMAL}"
+    sleep 1
 }
 
 reset
 info_ascii
 
 if (($EUID == 0)); then
-	info_error "Do not run this script as root"
+    info_error "Do not run this script as root"
 fi
 
 info "Please enter your password so that this script can sudo:\n*** (hopefully sudo will remember your authentication and not prompt you again)"
@@ -55,15 +55,15 @@ info "Updating packages"
 sudo apt update && sudo apt-get update && sudo apt-get install -y build-essential
 
 if ! which curl &>/dev/null; then
-	sudo apt -y install curl
+    sudo apt -y install curl
 fi
 
 if ! which fusermount &>/dev/null; then
-	sudo apt -y install fuse
+    sudo apt -y install fuse
 fi
 
 if ! which unzip &>/dev/null; then
-	sudo apt -y install unzip
+    sudo apt -y install unzip
 fi
 info_done
 
@@ -77,20 +77,26 @@ info_done
 
 info "Cloning wesleyfebarretos/.dotfiles"
 if ! [[ -d ~/dots/.git ]]; then
-	rm -rf ~/.dotfiles
-	git clone https://github.com/wesleyfebarretos/.dotfiles
-	cd .dotfiles
-	git init
-	git pull origin master
-	git submodule init
-	git submodule update
-	cd ../
+    rm -rf ~/.dotfiles
+    git clone https://github.com/wesleyfebarretos/.dotfiles
+    cd .dotfiles
+    git init
+    git pull origin master
+    git submodule init
+    git submodule update
+    cd ../
 else
-	info ".dotfiles already exists, performing git pull"
-	cd ~/.dotifles
-	git pull
-	cd ../
+    info ".dotfiles already exists, performing git pull"
+    cd ~/.dotifles
+    git pull
+    cd ../
 fi
+info_done
+
+info "Installing kitty"
+mkdir ~/.local
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+    installer=nightly
 info_done
 
 info "Installing i3wm"
