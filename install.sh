@@ -187,6 +187,10 @@ rm -rf ~/.cache/nvim
 cd ~/.dotfiles && stow nvim && cd ~
 info_done
 
+info "Installing lib fuse"
+sudo apt install -y libfuse2 libfuse-dev
+info_done
+
 info "Installing fira code"
 curl -Lo FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
 unzip FiraCode.zip -d FiraCode
@@ -223,7 +227,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 info_done
 
 info "Installing atuin"
-cargo install atuin
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 info_done
 
 info "Installing git-delta"
