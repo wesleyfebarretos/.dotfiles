@@ -277,6 +277,7 @@ rm -rf ~/.config/i3 && stow i3
 rm -rf ~/.config/i3status && stow i3status
 rm -rf ~/.config/lazygit && stow lazygit
 rm -rf ~/.config/nvim && stow nvim
+rm -rf ~/.config/kitty && stow kitty
 rm -rf ~/.local/scripts && stow scripts
 rm -rf ~/.zsh* && stow zsh
 cd ~
