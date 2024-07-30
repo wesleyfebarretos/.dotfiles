@@ -16,5 +16,10 @@ After cloning you must enter the ~/.dotfiles folder and run the stow command for
 $ cd ~/.dotfiles && stow git
 ```
 
+#Enable touch pad in i3wm
+
+Copy this 90-touchpad.conf to /etc/X11/xorg.conf.d/90-touchpad.conf
+
+
 #### Next Features:
 - create a shell script to automatically stow all files when cloning the repository, ensuring no previous links exist

@@ -44,3 +44,6 @@ export BAT_THEME="tokyonight_night"
 
 #fzf keys
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(atuin init zsh)"
+
+. "$HOME/.atuin/bin/env"
