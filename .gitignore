@@ -1,1 +1,4 @@
 lazygit/.config/lazygit/state.yml
+
+kitty/.config/kitty/**
+!kitty/.config/kitty/kitty.conf
