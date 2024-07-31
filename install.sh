@@ -99,6 +99,10 @@ info "Installing kitty"
     installer=nightly
 info_done
 
+info "Installing gnome-screenshot"
+    sudo apt install gnome-screenshot
+info_done
+
 info "Installing i3wm"
     cd ~
     /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2024.03.04_all.deb keyring.deb SHA256:f9bb4340b5ce0ded29b7e014ee9ce788006e9bbfe31e96c09b2118ab91fca734
