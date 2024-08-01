@@ -113,6 +113,10 @@ info "Installing i3wm"
     rm -rf keyring.deb
 info_done
 
+info "Installing i3wm audio software control"
+    sudo apt install pulseaudio-utils
+info_done
+
 info "Installing pip3"
     sudo apt install -y python3-pip
 info_done
