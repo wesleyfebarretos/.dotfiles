@@ -49,3 +49,5 @@ eval "$(atuin init zsh)"
 
 . "$HOME/.atuin/bin/env"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(zoxide init zsh)"
