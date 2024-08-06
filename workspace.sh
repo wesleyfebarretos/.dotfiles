@@ -42,38 +42,50 @@ EOF
 reset
 info_ascii
 
+info "Installing go"
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.22.6.linux-amd64.tar.gz
+info_done
+
+info "Installing gum"
+go install github.com/charmbracelet/gum@latest
+info_done
+
+info "Installing sesh"
+go install github.com/joshmedeski/sesh@latest
+info_done
+
 info "Installing nvm"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-    source ~/.zshrc
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.zshrc
 info_done
 
 info "Installing node 20 and tools"
-    nvm install 20
-    nvm use 20
-    npm install -g @angular/cli@17
-    npm install -g ntl
+nvm install 20
+nvm use 20
+npm install -g @angular/cli@17
+npm install -g ntl
 info_done
 
 info "Installing node 18 and tools"
-    nvm install 18
-    nvm use 18
-    npm install -g @angular/cli@17
-    npm install -g ntl
+nvm install 18
+nvm use 18
+npm install -g @angular/cli@17
+npm install -g ntl
 info_done
 
 info "Installing node 16 and tools"
-    nvm install 16
-    nvm use 16
-    npm i -g @adonisjs/cli
-    npm install -g ntl
+nvm install 16
+nvm use 16
+npm i -g @adonisjs/cli
+npm install -g ntl
 info_done
 
 info "Installing postman"
-    sudo snap install postman
+sudo snap install postman
 info_done
 
 info "Installing dbeaver"
-    curl -Lo dbeaver.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
-    sudo dpkg -i ./dbeaver.deb
-    rm -rf ./dbeaver.deb
+curl -Lo dbeaver.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+sudo dpkg -i ./dbeaver.deb
+rm -rf ./dbeaver.deb
 info_done
