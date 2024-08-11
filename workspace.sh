@@ -42,9 +42,10 @@ EOF
 reset
 info_ascii
 
-info "Installing go"
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.22.6.linux-amd64.tar.gz
-info_done
+if ! command -v go &> /dev/null; then
+    info_error "Go is not installed. Please install Go to continue."
+    exit 1
+fi
 
 info "Installing gum"
 go install github.com/charmbracelet/gum@latest
