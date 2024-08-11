@@ -51,3 +51,11 @@ eval "$(atuin init zsh)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(zoxide init zsh)"
+
+if [ -f ~/.ssh/agent."$USER".env ]; then
+    source ~/.ssh/agent."$USER".env
+else
+    eval "$(ssh-agent -s)"
+    echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/agent."$USER".env
+    echo "export SSH_AGENT_PID=$SSH_AGENT_PID" >> ~/.ssh/agent."$USER".env
+fi
