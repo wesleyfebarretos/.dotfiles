@@ -53,6 +53,11 @@ eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 
 if [ -f ~/.ssh/agent."$USER".env ]; then
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        eval "$(ssh-agent -s)"
+        echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/agent."$USER".env
+        echo "export SSH_AGENT_PID=$SSH_AGENT_PID" >> ~/.ssh/agent."$USER".env
+    fi
     source ~/.ssh/agent."$USER".env
 else
     eval "$(ssh-agent -s)"
