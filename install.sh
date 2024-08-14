@@ -296,6 +296,7 @@ rm -rf ~/.config/nvim && stow nvim
 rm -rf ~/.config/kitty && stow kitty
 rm -rf ~/.local/scripts && stow scripts
 rm -rf ~/.zsh* && stow zsh
+rm -rf ~/.ideavimrc && stow ideavim
 cd ~
 info_done
 

@@ -1,0 +1,24 @@
+" Leader key
+let mapleader = " "
+
+" Remap Ctrl + S in Insert mode to save the file and switch to Normal mode
+imap <C-s> <Esc>:w<CR>
+
+" Yank to clipboard
+set clipboard+=unnamed
+
+" Highlight yank
+set highlightedyank
+
+" Make intelij recognize ctrl + k to select next LSP suggestion
+set lookupkeys=<Tab>,<Down>,<Up>,<Enter>,<Left>,<Right>,<C-Down>,<C-Up>,<PageUp>,<PageDown>,<C-J>,<C-Q>,<C-K>
+
+" Clean inside quotes
+nmap ciq ci"
+nmap ciq ci'
+nmap ciq ci`
+
+" Clean around quotes
+nmap caq ca"
+nmap caq ca'
+nmap caq ca`
