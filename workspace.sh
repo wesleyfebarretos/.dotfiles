@@ -42,19 +42,6 @@ EOF
 reset
 info_ascii
 
-if ! command -v go &> /dev/null; then
-    info_error "Go is not installed. Please install Go to continue."
-    exit 1
-fi
-
-info "Installing gum"
-go install github.com/charmbracelet/gum@latest
-info_done
-
-info "Installing sesh"
-go install github.com/joshmedeski/sesh@latest
-info_done
-
 info "Installing nvm"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 source ~/.zshrc
@@ -79,14 +66,4 @@ nvm install 16
 nvm use 16
 npm i -g @adonisjs/cli
 npm install -g ntl
-info_done
-
-info "Installing postman"
-sudo snap install postman
-info_done
-
-info "Installing dbeaver"
-curl -Lo dbeaver.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
-sudo dpkg -i ./dbeaver.deb
-rm -rf ./dbeaver.deb
 info_done

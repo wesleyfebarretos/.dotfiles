@@ -275,6 +275,35 @@ info "Install zoxide"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 info_done
 
+info "Install golang"
+GO_INSTALL_DIR="/usr/local/go"
+LATEST_GO_VERSION=$(curl -sSL https://golang.org/VERSION\?m\=text | grep -o '^go[0-9\.]*')
+GO_DOWNLOAD_URL="https://golang.org/dl/${LATEST_GO_VERSION}.linux-amd64.tar.gz"
+curl -sSL -o go_latest.tar.gz $GO_DOWNLOAD_URL
+sudo rm -rf $GO_INSTALL_DIR
+sudo tar -C /usr/local -xzf go_latest.tar.gz
+rm go_latest.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+info_done
+
+info "Installing gum"
+go install github.com/charmbracelet/gum@latest
+info_done
+
+info "Installing sesh"
+go install github.com/joshmedeski/sesh@latest
+info_done
+
+info "Installing postman"
+sudo snap install postman
+info_done
+
+info "Installing dbeaver"
+curl -Lo dbeaver.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+sudo dpkg -i ./dbeaver.deb
+rm -rf ./dbeaver.deb
+info_done
+
 info "Configuring zsh"
 rm -rf ~/.zsh*
 rm -rf ~/.bash_history
