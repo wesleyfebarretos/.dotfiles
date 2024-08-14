@@ -295,7 +295,10 @@ go install github.com/joshmedeski/sesh@latest
 info_done
 
 info "Installing postman"
-sudo snap install postman
+curl -sSL https://dl.pstmn.io/download/latest/linux_64 -o postman.tar.gz
+tar -xzf postman.tar.gz
+mv Postman ~/.local/share
+rm -rf postman.tar.gz
 info_done
 
 info "Installing dbeaver"
