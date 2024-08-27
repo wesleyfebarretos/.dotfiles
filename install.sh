@@ -75,22 +75,13 @@ info "Installing stow"
 sudo apt install -y stow
 info_done
 
-info "Cloning wesleyfebarretos/.dotfiles"
-if ! [[ -d ~/dots/.git ]]; then
-    rm -rf ~/.dotfiles
-    git clone https://github.com/wesleyfebarretos/.dotfiles
-    cd .dotfiles
-    git init
-    git pull origin master
-    git submodule init
-    git submodule update
-    cd ../
-else
-    info ".dotfiles already exists, performing git pull"
-    cd ~/.dotifles
-    git pull
-    cd ../
-fi
+info "Initializing submodules from .dotfiles ..."
+cd ~/.dotfiles
+git init
+git pull origin master
+git submodule init
+git submodule update
+cd ../
 info_done
 
 info "Installing kitty"
