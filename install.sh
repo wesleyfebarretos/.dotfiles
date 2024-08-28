@@ -251,7 +251,9 @@ info "Installing zsh plugins"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
-git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
+git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/zsh-autocomplete
+cd ~/zsh-autocomplete && git checkout adfade31a84dfa512a7e3583d567ee19ac4a7936 && cd ~
+cp -r zsh-autocomplete /home/weslyn/.oh-my-zsh/custom/plugins && rm -rf ~/zsh-autocomplete
 info_done
 
 info "Installing zsh dracula theme"
