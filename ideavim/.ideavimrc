@@ -7,6 +7,9 @@ imap <C-s> <Esc>:w<CR>
 " Yank to clipboard
 set clipboard+=unnamed
 
+" Easy comment lines plugin
+set commentary
+
 " Highlight yank
 set highlightedyank
 
