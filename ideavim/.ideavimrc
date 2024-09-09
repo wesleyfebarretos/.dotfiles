@@ -4,6 +4,8 @@ let mapleader = " "
 " Remap Ctrl + S in Insert mode to save the file and switch to Normal mode
 imap <C-s> <Esc>:w<CR>
 
+map <C-p> :action SearchEverywhere<CR>
+
 " Yank to clipboard
 set clipboard+=unnamed
 
