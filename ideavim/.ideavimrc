@@ -7,7 +7,7 @@ imap <C-s> <Esc>:w<CR>
 map <C-p> :action SearchEverywhere<CR>
 
 " Yank to clipboard
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Easy comment lines plugin
 set commentary
