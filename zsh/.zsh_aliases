@@ -13,9 +13,6 @@ alias hash-generator="openssl rand -base64 64"
 #Permission FengDB volume dir
 alias fengdb-data-permission="sudo chmod -R 775 /home/wesley/TI/FENG/P7SET/CLIs/nx-feng-db/@feng-db/data"
 
-# Move to trash instead of deleting
-alias rm="trash-put"
-
 #Neovim
 alias n="nvim"
 
