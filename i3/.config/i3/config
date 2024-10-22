@@ -60,10 +60,10 @@ bindsym $mod+n mode "restore"
 exec --no-startup-id /usr/lib/gsd-xsettings
 
 # Set Keyboard Rate on Start I3
-exec --no-startup-id xset r rate 150 60
+exec_always --no-startup-id xset r rate 150 60
 
 # Set pipe in Z key cause my keyboard in br layout doesnt have mapped
-exec --no-startup-id sh -c '[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap'
+exec_always --no-startup-id sh -c '[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap'
 
 #Script to warning about low laptop battery
 exec ~/.local/scripts/i3-battery-popup -L 20 -l 15
