@@ -81,6 +81,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # Set command to print screen
 bindsym --release $mod+Print exec gnome-screenshot -i
+bindsym --release $mod+Shift+s exec gnome-screenshot -i
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
