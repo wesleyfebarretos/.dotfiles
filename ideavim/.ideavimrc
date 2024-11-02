@@ -20,3 +20,8 @@ set lookupkeys=<Tab>,<Down>,<Up>,<Enter>,<Left>,<Right>,<C-Down>,<C-Up>,<PageUp>
 
 set NERDTree
 
+" Map Alt + o to open a new line below, exit insert mode, and move cursor up
+map <A-o> o<Esc>k
+
+" Map Alt + Shift + o to open a new line above, exit insert mode, and move cursor down
+map <A-S-o> O<Esc>j
