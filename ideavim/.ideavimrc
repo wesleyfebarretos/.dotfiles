@@ -35,3 +35,6 @@ vmap > >gv
 
 " Map visual mode < to shift line and go back to visual mode
 vmap < <gv
+
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
