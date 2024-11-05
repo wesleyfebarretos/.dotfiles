@@ -25,3 +25,13 @@ map <A-o> <Esc>o<Esc>k
 
 " Map Alt + Shift + o in normal mode to open a new line above, exit insert mode, and move cursor down
 map <A-S-o> <Esc>O<Esc>
+
+map <Leader>cf :action ReformatCode<CR>
+
+map <Leader>co :action OptimizeImports<CR>
+
+" Map visual mode > to push line and go back to visual mode
+vmap > >gv
+
+" Map visual mode < to shift line and go back to visual mode
+vmap < <gv
