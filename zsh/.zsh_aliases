@@ -40,3 +40,5 @@ alias gt="git for-each-ref --sort=-taggerdate --format '%(refname:short) %(tagge
 
 #See mouse battery G703
 alias mouse-status="upower --dump | grep -A 13 'G703'"
+
+alias lg="lazygit"
