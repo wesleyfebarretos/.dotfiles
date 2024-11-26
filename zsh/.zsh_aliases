@@ -22,8 +22,11 @@ alias cat="bat"
 #zoxide instead cd
 alias cd="z"
 
-#Tmux start with directory complete
+#Tmux
+# start with directory complete
 alias t="sesh connect \"\$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --height 50 --prompt='⚡')\""
+# Kill server
+alias tk="tmux kill-server"
 
 #eza instead ls
 alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
