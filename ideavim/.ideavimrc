@@ -41,3 +41,6 @@ vmap < <gv
 
 nnoremap ]e :action GotoNextError<CR>
 nnoremap [e :action GotoPreviousError<CR>
+
+" Set import completion
+map <Leader>ca :action ShowIntentionActions<CR>
