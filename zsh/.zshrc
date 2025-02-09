@@ -41,7 +41,7 @@ eval "$(atuin init zsh)"
 source ~/fzf-git.sh/fzf-git.sh
 
 #bat better than cat
-export BAT_THEME="tokyonight_night"
+export BAT_THEME="Catppuccin Mocha"
 
 #fzf keys
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
