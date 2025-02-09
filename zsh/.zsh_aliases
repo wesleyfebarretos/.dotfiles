@@ -45,3 +45,9 @@ alias gt="git for-each-ref --sort=-taggerdate --format '%(refname:short) %(tagge
 alias mouse-status="upower --dump | grep -A 13 'G703'"
 
 alias lg="lazygit"
+
+# Put external monitor as primary to use with iw3m that doesnt support 2 monitors
+alias use-external-monitor="xrandr --output HDMI-1 --auto --primary --output eDP-1 --off"
+
+# Put laptop monitor back as primary
+alias use-laptop-monitor="xrandr --output HDMI-1 --off --output eDP-1 --auto --primary"

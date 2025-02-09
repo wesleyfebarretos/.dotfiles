@@ -63,7 +63,7 @@ exec --no-startup-id /usr/lib/gsd-xsettings
 # exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --above eDP-1
 
 # Mirror monitors screens
-exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --same-as eDP-1
+# exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --same-as eDP-1
 
 # Set Keyboard Rate on Start I3
 exec_always --no-startup-id xset r rate 150 60
