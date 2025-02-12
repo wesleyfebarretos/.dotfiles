@@ -259,3 +259,5 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+for_window [title=".*Emulator.*"] floating enable
