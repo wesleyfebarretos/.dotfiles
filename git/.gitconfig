@@ -36,3 +36,6 @@
     colorMoved = default
 [apply]
 	whitespace = warn
+
+[includeIf "gitdir:~/TI/feng/"]
+    path = ~/.gitconfig-work
