@@ -351,4 +351,10 @@ sudo usermod -aG docker $USER
 newgrp docker
 info_done
 
+info "Install Copyq"
+sudo add-apt-repository ppa:hluk/copyq
+sudo apt update
+sudo apt install copyq
+info_done
+
 info_important "Finish Setup Dump!!!"

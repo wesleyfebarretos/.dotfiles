@@ -114,6 +114,12 @@ bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Start CopyQ in the background when i3 starts
+exec --no-startup-id copyq &
+
+# Show CopyQ UI when pressing Mod+ESC
+bindsym $mod+k exec --no-startup-id copyq toggle
+
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
@@ -261,3 +267,8 @@ bar {
 }
 
 for_window [title=".*Emulator.*"] floating enable
+
+for_window [class="copyq"] \
+  floating enable, \
+  resize set 800 600, \
+  move position center
