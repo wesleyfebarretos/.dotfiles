@@ -309,6 +309,20 @@ zsh ~/.zshrc
 sudo usermod --shell /usr/bin/zsh $USER
 info_done
 
+info "Install Copyq"
+sudo add-apt-repository ppa:hluk/copyq
+sudo apt update
+sudo apt install copyq
+info_done
+
+info "Install Picom"
+sudo apt install picom
+info_done
+
+info "Install feh"
+sudo apt install feh
+info_done
+
 info "Setup all configs"
 cd ~/.dotfiles
 rm -rf ~/.gitconfig && stow git
@@ -322,6 +336,7 @@ rm -rf ~/.config/kitty && stow kitty
 rm -rf ~/.local/scripts && stow scripts
 rm -rf ~/.zsh* && stow zsh
 rm -rf ~/.ideavimrc && stow ideavim
+rm -rf ~/.config/picom && stow picom
 cd ~
 info_done
 
@@ -349,12 +364,6 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 
 newgrp docker
-info_done
-
-info "Install Copyq"
-sudo add-apt-repository ppa:hluk/copyq
-sudo apt update
-sudo apt install copyq
 info_done
 
 info_important "Finish Setup Dump!!!"
