@@ -323,12 +323,6 @@ info "Install feh"
 sudo apt install feh
 info_done
 
-info "Install i3 autotiling"
-git clone https://github.com/nwg-piotr/autotiling.git
-mv autotiling ~/usr/bin/autotiling
-chmod +x ~/usr/bin/autotiling
-info_done
-
 info "Setup all configs"
 cd ~/.dotfiles
 rm -rf ~/.gitconfig && stow git
