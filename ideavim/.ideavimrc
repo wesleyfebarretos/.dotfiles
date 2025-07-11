@@ -46,7 +46,7 @@ nnoremap [e :action GotoPreviousError<CR>
 map <Leader>ca :action ShowIntentionActions<CR>
 
 " Paste without override current registrie
-vnoremap "_dP
+vnoremap p "_dP
 
 " Delete without override current registrie
 vnoremap <Leader>d "_d
