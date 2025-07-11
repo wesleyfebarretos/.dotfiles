@@ -44,3 +44,17 @@ nnoremap [e :action GotoPreviousError<CR>
 
 " Set import completion
 map <Leader>ca :action ShowIntentionActions<CR>
+
+" Paste without override current registrie
+vnoremap "_dP
+
+" Delete without override current registrie
+vnoremap <Leader>d "_d
+nnoremap <Leader>d "_dd
+
+" Jump and center screen
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <C-u> 10k
+nnoremap <C-d> 10j
