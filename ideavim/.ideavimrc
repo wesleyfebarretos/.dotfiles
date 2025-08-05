@@ -58,3 +58,5 @@ nnoremap N Nzz
 
 nnoremap <C-u> 10k
 nnoremap <C-d> 10j
+
+nnoremap gi :action GotoImplementation<CR>
