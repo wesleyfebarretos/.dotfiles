@@ -47,7 +47,10 @@ export BAT_THEME="Catppuccin Mocha"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(atuin init zsh)"
 
-. "$HOME/.atuin/bin/env"
+if [ -f "$HOME/.atuin/bin/env" ]; then
+    . "$HOME/.atuin/bin/env"
+fi
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(zoxide init zsh)"
