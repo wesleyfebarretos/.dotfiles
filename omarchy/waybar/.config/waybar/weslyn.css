@@ -1,0 +1,85 @@
+/* -- Global rules -- */
+* {
+  border-radius: 8px;
+  background: transparent;
+}
+
+window#waybar {
+  border-radius: 0;
+}
+
+tooltip {
+  background: @background;
+}
+
+#clock,
+#tray-expander,
+#metrics,
+#resources,
+#workspaces {
+  color: @foreground;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: @background;
+}
+
+#tray-expander {
+    margin-right: 10px;
+    padding-right: 0px;
+    margin-left: 0px;
+    padding-left: 8px;
+}
+
+#pulseaudio {
+    padding-right: 12px;
+    margin-right: 0px;
+}
+
+.modules-right #resources {
+  margin-right: 8px;
+}
+
+#cpu {
+  margin-right: 10px;
+}
+
+#memory,
+#cpu,
+#network,
+#bluetooth,
+#disk {
+  margin-right: 18px
+}
+
+#memory {
+    padding-left: 8px;
+    margin-left: 0px;
+}
+
+#battery {
+    padding-right: 8px;
+    margin-right: 0px;
+}
+
+#clock {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#cpu {
+    margin-left: 0px;
+}
+
+#network.disconnected {
+  color: red
+}
+
+#battery.warning {
+  color: yellow;
+}
+
+#battery.critical {
+  color: red;
+}
