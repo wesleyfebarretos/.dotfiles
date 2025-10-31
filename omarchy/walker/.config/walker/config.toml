@@ -6,7 +6,7 @@ global_argument_delimiter = "#"                                             # qu
 exact_search_prefix = "'"                                                   # disable fuzzy searching
 theme = "omarchy-default"                                                   # theme to use
 disable_mouse = false                                                       # disable mouse (on input and list only)
-additional_theme_location = "~/.local/share/omarchy/default/walker/themes/"
+additional_theme_location = "./themes/"
 
 [shell]
 anchor_top = true
@@ -22,7 +22,7 @@ close = ["Escape"]
 next = ["Down"]
 previous = ["Up"]
 toggle_exact = ["ctrl e"]
-resume_last_query = ["ctrl r"
+resume_last_query = ["ctrl r"]
 quick_activate = []
 
 [providers]
