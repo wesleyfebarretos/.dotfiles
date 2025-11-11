@@ -37,5 +37,5 @@
 [apply]
 	whitespace = warn
 
-[includeIf "gitdir:~/TI/feng/"]
+[includeIf "gitdir:~/Work/"]
     path = ~/.gitconfig-work
