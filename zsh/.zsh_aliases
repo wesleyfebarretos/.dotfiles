@@ -24,7 +24,7 @@ alias cd="z"
 
 #Tmux
 # start with directory complete
-alias t="sesh connect \"\$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --height 50 --prompt='⚡')\""
+alias sc="sesh connect \"\$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --height 50 --prompt='⚡')\""
 # Kill server
 alias tk="tmux kill-server"
 
@@ -51,3 +51,6 @@ alias use-external-monitor="xrandr --output HDMI-1 --auto --primary --output eDP
 
 # Put laptop monitor back as primary
 alias use-laptop-monitor="xrandr --output HDMI-1 --off --output eDP-1 --auto --primary"
+
+alias k="kubectl"
+alias t="terraform"
