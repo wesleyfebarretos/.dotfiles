@@ -176,6 +176,7 @@
         "format": "",
         "format-connected-battery": " {device_alias} {device_battery_percentage}%",
         "format-disabled": "󰂲",
+    "format-off": "󰂲",
         "format-connected": "󰂱",
     "format-no-controller": "",
         "tooltip-format": "Devices connected: {num_connections}",
