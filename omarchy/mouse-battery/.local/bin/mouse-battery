@@ -1,7 +1,7 @@
 #!/bin/bash
 while read -r dev; do
   info=$(upower -i "$dev" 2>/dev/null)
-  if echo "$info" | grep -q "G703 LIGHTSPEED"; then
+  if echo "$info" | grep -q "G703"; then
     percentage=$(echo "$info" | grep "percentage:" | tr -dc '0-9')
     state_line=$(echo "$info" | grep "state:")
     state=${state_line##*:}
