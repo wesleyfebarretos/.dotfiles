@@ -99,6 +99,9 @@ ln -s /home/weslyn/.config/omarchy/current/theme/neovim.lua /home/weslyn/.config
 rm -rf ~/.local/scripts && stow scripts
 rm -rf ~/.zsh* && stow zsh
 rm -rf ~/.ideavimrc && stow ideavim
+
+chmod +x ./mouse-battery/.local/bin/mouse-battery
+stow -t "$HOME" mouse-battery
 cd ~
 
 info_done

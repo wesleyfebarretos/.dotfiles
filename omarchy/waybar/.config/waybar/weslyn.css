@@ -83,3 +83,20 @@ tooltip {
 #battery.critical {
   color: red;
 }
+
+#custom-mouse-battery {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#custom-mouse-battery.warning {
+  color: #f1fa8c;
+}
+
+#custom-mouse-battery.critical {
+  color: #ff5555;
+}
+
+#custom-mouse-battery.charging {
+  color: #50fa7b;
+}

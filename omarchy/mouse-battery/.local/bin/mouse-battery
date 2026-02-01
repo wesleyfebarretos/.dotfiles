@@ -1,0 +1,20 @@
+#!/bin/bash
+while read -r dev; do
+  info=$(upower -i "$dev" 2>/dev/null)
+  if echo "$info" | grep -q "G703 LIGHTSPEED"; then
+    percentage=$(echo "$info" | grep "percentage:" | tr -dc '0-9')
+    state_line=$(echo "$info" | grep "state:")
+    state=${state_line##*:}
+    state=${state// /}
+    
+    if [[ "$state" == "charging" ]]; then
+      echo "{\"percentage\": $percentage, \"alt\": \"charging\", \"class\": \"charging\"}"
+    else
+      echo "{\"percentage\": $percentage, \"alt\": \"default\"}"
+    fi
+    exit 0
+  fi
+done < <(upower -e)
+
+echo ""
+

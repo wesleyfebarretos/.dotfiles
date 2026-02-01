@@ -106,6 +106,7 @@
         "modules": [
             "group/tray-expander",
             "bluetooth",
+            "custom/mouse-battery",
             "network",
             "pulseaudio"
         ],
@@ -219,19 +220,33 @@
         "signal": 8,
         "return-type": "json"
     },
-  "custom/voxtype": {
-    "exec": "omarchy-voxtype-status",
-    "return-type": "json",
-    "format": "{icon}",
-    "format-icons": {
-      "idle": "",
-      "recording": "󰍬",
-      "transcribing": "󰔟"
+    "custom/voxtype": {
+        "exec": "omarchy-voxtype-status",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "idle": "",
+            "recording": "󰍬",
+            "transcribing": "󰔟"
+        },
+        "tooltip": true,
+        "on-click-right": "omarchy-voxtype-config",
+        "on-click": "omarchy-voxtype-model"
     },
-    "tooltip": true,
-    "on-click-right": "omarchy-voxtype-config",
-    "on-click": "omarchy-voxtype-model"
-  },
+    "custom/mouse-battery": {
+        "exec": "mouse-battery",
+        "return-type": "json",
+        "format": "{icon} {percentage}%",
+        "format-icons": {
+            "charging": "󰍽󱐋",
+            "default": "󰍽"
+        },
+        "interval": 120,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        }
+    },
     "tray": {
         "icon-size": 12,
         "spacing": 12
