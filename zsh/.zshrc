@@ -70,3 +70,5 @@ else
     echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/agent."$USER".env
     echo "export SSH_AGENT_PID=$SSH_AGENT_PID" >> ~/.ssh/agent."$USER".env
 fi
+
+. "$HOME/.local/share/../bin/env"
