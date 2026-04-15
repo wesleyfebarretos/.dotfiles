@@ -72,3 +72,5 @@ else
 fi
 
 . "$HOME/.local/share/../bin/env"
+
+eval "$(task --completion zsh)"
