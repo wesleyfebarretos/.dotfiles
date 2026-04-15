@@ -55,3 +55,6 @@ alias use-laptop-monitor="xrandr --output HDMI-1 --off --output eDP-1 --auto --p
 alias k="kubectl"
 alias t="terraform"
 alias dc="docker compose"
+
+alias t="task"
+alias tl="task --list"
