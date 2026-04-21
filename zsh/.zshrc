@@ -72,3 +72,5 @@ else
 fi
 
 . "$HOME/.local/share/../bin/env"
+
+command -v mise >/dev/null && eval "$(mise activate zsh)"
